@@ -12,3 +12,4 @@ C:\Users\kolan\Desktop\Уник\MiniGame\MiniGame\obj\Debug\net8.0\refint\MiniGa
 C:\Users\kolan\Desktop\Уник\MiniGame\MiniGame\obj\Debug\net8.0\MiniGame.pdb
 C:\Users\kolan\Desktop\Уник\MiniGame\MiniGame\obj\Debug\net8.0\MiniGame.genruntimeconfig.cache
 C:\Users\kolan\Desktop\Уник\MiniGame\MiniGame\obj\Debug\net8.0\ref\MiniGame.dll
+C:\Users\kolan\Desktop\Уник\MiniGame\MiniGame\obj\Debug\net8.0\MiniGame.sourcelink.json

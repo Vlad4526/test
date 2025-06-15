@@ -1,4 +1,5 @@
-﻿public class Map
+﻿using System.Text.Json;
+public class Map
 {
     private int shirinaMap;
     private int visotaMap;
@@ -167,6 +168,69 @@
         }
 
         return !(єЗайці && єЛисиця);
+    }
+
+    public void SaveGameResult(string winner, int days)
+    {
+        var result = new GameResult
+        {
+            Переможці = winner,
+            ДнівПрожито = days
+        };
+
+        string json = JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("game_result.json", json);
+    }
+
+    public int GetDaysSurvived()
+    {
+        int days = 0;
+        for (int x = 1; x < shirinaMap - 1; x++)
+        {
+            for (int y = 1; y < visotaMap - 1; y++)
+            {
+                if (klitunku[x, y].Зайець != null || klitunku[x, y].Лисиця != null)
+                {
+                    days++;
+                }
+            }
+        }
+        return days;
+    }
+
+    public string GetWinner()
+    {
+        bool єЗайці = false;
+        bool єЛисиця = false;
+
+        for (int x = 1; x < shirinaMap - 1; x++)
+        {
+            for (int y = 1; y < visotaMap - 1; y++)
+            {
+                if (klitunku[x, y].Зайець != null)
+                {
+                    єЗайці = true;
+                }
+
+                if (klitunku[x, y].Лисиця != null)
+                {
+                    єЛисиця = true;
+                }
+            }
+        }
+
+        if (єЗайці && !єЛисиця)
+        {
+            return "Зайці";
+        }
+        else if (!єЗайці && єЛисиця)
+        {
+            return "Лисиці";
+        }
+        else
+        {
+            return "Ніхто";
+        }
     }
 
     private int ВипадковеЧисло(int мін, int макс)
